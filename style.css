@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    min-height: 100;
+    background-color:rgb(211, 207, 207);
+}
+
+
+.jumbotron{
+    background-color: #ffffff; 
+
+}
+
+
+.btn{
+    border-radius: 35px;
+}
+
+
+@media screen and (max-width: 400px) {
+    *{
+        font-size: 70%;
+    }
+}
+@media screen and (max-width:550px) {
+    .btn{
+        flex: 0 0 80%;
+        max-width: 80%;
+        margin-bottom: 10px;
+}
+
+
+
+
+
+
+    }
+
+}
