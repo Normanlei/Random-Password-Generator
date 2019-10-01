@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8˜" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Password Generator</title>
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <!--Header Section-->
   <header class="container-fluid">
     <div class="row">
       <h1 class="col-12 text-center mb-0">Password Generator</h1>
@@ -21,10 +22,13 @@
       <h6 class="col-12 text-right mb-4">--by Norman Lei</h6>
     </div>
   </header>
+
+  <!--Body Section-->
   <div class="jumbotron py-4 px-3 col-11 mx-auto">
     <h2 class="text-center pb-3 border-bottom">Generate a Password</h2>
 
-    <textarea readonly class="form-control text-center mb-4" rows="8" id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+    <textarea readonly class="form-control text-center mb-4" rows="8" id="password" placeholder="Your Secure Password"
+      aria-label="Generated Password"></textarea>
 
     <div class="row justify-content-around border-top pt-4 mx-0">
       <button class="btn btn-primary col-4" id="generate" onclick="showPasswordFunction()">Generate Password</button>
@@ -34,20 +38,29 @@
     </div>
   </div>
 
-  <!-- <script>
+
+  <!--Javascript Section-->
+  <script>
+    //Welcome Alert
     alert("Welcome to Password Generator by Norman Lei");
+
+    // Length of the password
     var length = prompt("Enter the Length of Password (Must be between 8 and 128 characters)");
+
+    // Validate the length of the password
     while (!(length >= 8 && length <= 128)) {
+      alert("Must be between 8 and 128 characters");
       length = prompt("Enter a valid Length of Password (Must be between 8 and 128 characters)");
     }
 
-    alert("For the 4 below character type choices, ensure that you select at least one character type.");
 
+    // Criteria Choice of the password
+    alert("For the 4 below character type choices, ensure that you select at least one character type.");
     var specialChar = confirm("Do you want special characters in your password?");
     var numericChar = confirm("Do you want numerical characters in your password?");
     var lowerChar = confirm("Do you want lowerase characters in your password?");
     var upperChar = confirm("Do you want uppercase characters in your password?");
-
+    // Validate the minimum criteria need of the password
     while (!specialChar && !numericChar && !lowerChar && !upperChar) {
       alert("Ensure that you select at least one character type!!!");
       specialChar = confirm("Do you want special characters in your password?");
@@ -56,6 +69,7 @@
       upperChar = confirm("Do you want uppercase characters in your password?");
     }
 
+    // list of choices of each character type
     var charType = ["special", "number", "lowercase", "uppercase"];
     var specialList = "~`!#$%^&*+=-[]\\\';,/{}|\":<>?"; //length is 27
     var numberList = "0123456789";
@@ -63,9 +77,12 @@
     var upperList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var generateAgain = true;
     var count = 0; //click count on generate password button
+
+    //Generate Password Function
     function showPasswordFunction() {
       count++;
       var password = "";
+      // Friendly reminder, when click generate password button more than twice
       if (count >= 2) generateAgain = confirm("Are you sure to generate another password?")
       if (generateAgain) {
         while (password.length < length) {
@@ -87,6 +104,8 @@
       }
     }
 
+
+    // Copy to clipboard Function
     function copyFunction() {
       var copyText = document.getElementById("password");
       copyText.select();
@@ -94,7 +113,7 @@
       document.execCommand("copy");
       alert("Copied the password: " + copyText.value + " to Clipboard.");
     }
-  </script> -->
+  </script>
 </body>
 
 </html>
