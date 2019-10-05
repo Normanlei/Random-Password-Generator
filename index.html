@@ -8,7 +8,7 @@
   <title>Password Generator</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="asset/css/style.css">
 
 
 </head>
@@ -53,20 +53,30 @@
       length = prompt("Enter a valid Length of Password (Must be between 8 and 128 characters)");
     }
 
+    // Initially Defined
+    var specialChar = false;
+    var numericChar = false;
+    var lowerChar = false;
+    var upperChar = false;
+    
+    //run the function below
+    chooseFeature();
 
     // Criteria Choice of the password
-    alert("For the 4 below character type choices, ensure that you select at least one character type.");
-    var specialChar = confirm("Do you want special characters in your password?");
-    var numericChar = confirm("Do you want numerical characters in your password?");
-    var lowerChar = confirm("Do you want lowerase characters in your password?");
-    var upperChar = confirm("Do you want uppercase characters in your password?");
-    // Validate the minimum criteria need of the password
-    while (!specialChar && !numericChar && !lowerChar && !upperChar) {
-      alert("Ensure that you select at least one character type!!!");
+    function chooseFeature() {
+      alert("For the 4 below character type choices, ensure that you select at least one character type.");
       specialChar = confirm("Do you want special characters in your password?");
       numericChar = confirm("Do you want numerical characters in your password?");
       lowerChar = confirm("Do you want lowerase characters in your password?");
       upperChar = confirm("Do you want uppercase characters in your password?");
+      // Validate the minimum criteria need of the password
+      while (!specialChar && !numericChar && !lowerChar && !upperChar) {
+        alert("Ensure that you select at least one character type!!!");
+        specialChar = confirm("Do you want special characters in your password?");
+        numericChar = confirm("Do you want numerical characters in your password?");
+        lowerChar = confirm("Do you want lowerase characters in your password?");
+        upperChar = confirm("Do you want uppercase characters in your password?");
+      }
     }
 
     // list of choices of each character type
@@ -77,13 +87,20 @@
     var upperList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var generateAgain = true;
     var count = 0; //click count on generate password button
-
+    var featureChange = false;
     //Generate Password Function
     function showPasswordFunction() {
       count++;
       var password = "";
       // Friendly reminder, when click generate password button more than twice
-      if (count >= 2) generateAgain = confirm("Are you sure to generate another password?")
+      if (count >= 2) {
+        generateAgain = confirm("Are you sure to generate another password?");
+        if (generateAgain) //allow to update the password feature as long as the another password needed
+        featureChange = confirm("Do you want to update your password feature?");
+      }
+      if (featureChange) {
+        chooseFeature();  //if updating the password feature needed, go throught the function above
+      }
       if (generateAgain) {
         while (password.length < length) {
           var pick = null;
@@ -97,13 +114,12 @@
           } else if (tempType === "uppercase" && upperChar) {
             pick = upperList[Math.floor(Math.random() * upperList.length)];
           }
-          if (pick !== null) password += pick;
+          if (pick !== null) password += pick; 
         }
         // alert(password);
         document.getElementById("password").innerHTML = password;
       }
     }
-
 
     // Copy to clipboard Function
     function copyFunction() {

@@ -20,6 +20,8 @@ In the process of building this password generator, I have learned:
 * Realize using Bootstrap tags to build the main structure of the site is much more consice and easier
 * Familiarize using javascript to add more functional features along with html and css styling
 * Especially heavily using "alert", "prompt", "confirm", "function()", "onclick" and etc.
+* Adding some logic functionalities feature, like:
+![Image of Screenshot](asset/image/feature.png)
 
 
 
